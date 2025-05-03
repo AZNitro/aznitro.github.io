@@ -1,4 +1,4 @@
-import init, { greet, fetch_github_repos, get_language_color } from "./pkg/hello_wasm.js";
+import init, { greet, fetch_github_repos, get_language_color } from "./pkg/aznitro_website.js";
 
 // Enhanced device detection utility with emulator support
 function deviceDetection() {

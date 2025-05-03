@@ -1,7 +1,6 @@
 [package]
-name = "hello-wasm"
+name = "aznitro-website"
 version = "0.1.0"
-
 edition = "2021"
 
 [lib]
