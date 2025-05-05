@@ -28,11 +28,20 @@ jobs:
       
       - name: List pkg contents
         run: ls -la pkg/
+      
+      - name: Prepare for deployment
+        run: |
+          mkdir -p _site
+          cp -R *.html *.css *.js LICENSE _site/
+          cp -R pkg _site/
+          echo "Files for deployment:"
+          ls -la _site/
+          ls -la _site/pkg/
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./_site
           publish_branch: gh-pages
           keep_files: false
