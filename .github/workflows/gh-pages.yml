@@ -32,8 +32,11 @@ jobs:
       - name: Prepare for deployment
         run: |
           mkdir -p _site
-          cp -R *.html *.css *.js LICENSE _site/
+          cp -R *.html *.css *.js LICENSE .nojekyll _site/
           cp -R pkg _site/
+          cp -R page2 _site/
+          # Ensure .nojekyll exists
+          touch _site/.nojekyll
           echo "Files for deployment:"
           ls -la _site/
           ls -la _site/pkg/

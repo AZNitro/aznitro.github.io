@@ -1,17 +1,59 @@
-import { init, greet, fetch_github_repos, get_language_color } from "./pkg/aznitro_website.js";
+// REMOVE this direct import at the top
+// import { init, greet, fetch_github_repos, get_language_color } from "./pkg/aznitro_website.js";
 
-// Get the base URL for GitHub Pages deployment
+// KEEP these utility functions
 const getBaseUrl = () => {
   const scriptPath = document.currentScript.src;
   return scriptPath.substring(0, scriptPath.lastIndexOf('/') + 1);
 };
 
-// Use dynamic import with the correct base URL
-const loadWasm = async () => {
+// Declare variables to store the imported functions
+let init, greet, fetch_github_repos, get_language_color;
+
+// Use an async function to load the WASM module and its exports
+async function loadWasmModule() {
+  try {
+    const baseUrl = getBaseUrl();
+    console.log('Base URL for WASM loading:', baseUrl);
+    
+    // Dynamic import with the correct path
+    const wasmModule = await import(`${baseUrl}pkg/aznitro_website.js`);
+    console.log('WASM module loaded successfully');
+    
+    // Assign the imported functions
+    init = wasmModule.default;
+    greet = wasmModule.greet;
+    fetch_github_repos = wasmModule.fetch_github_repos;
+    get_language_color = wasmModule.get_language_color;
+    
+    return wasmModule;
+  } catch (error) {
+    console.error('Failed to load WASM module:', error);
+    throw error;
+  }
+}
+
+// Debug function to check WASM files
+function checkWasmFiles() {
   const baseUrl = getBaseUrl();
-  const wasmModule = await import(`${baseUrl}pkg/aznitro_website.js`);
-  return wasmModule;
-};
+  const pkgPath = `${baseUrl}pkg/`;
+  
+  console.log(`Checking WASM files at: ${pkgPath}`);
+  
+  // Check if main JS file exists
+  fetch(`${pkgPath}aznitro_website.js`)
+    .then(response => {
+      console.log(`JS file status: ${response.status} ${response.ok ? 'OK' : 'FAILED'}`);
+    })
+    .catch(err => console.error('Error checking JS file:', err));
+    
+  // Check if WASM file exists
+  fetch(`${pkgPath}aznitro_website_bg.wasm`)
+    .then(response => {
+      console.log(`WASM file status: ${response.status} ${response.ok ? 'OK' : 'FAILED'}`);
+    })
+    .catch(err => console.error('Error checking WASM file:', err));
+}
 
 // Enhanced device detection utility with emulator support
 function deviceDetection() {
@@ -905,6 +947,9 @@ function setupScrollToNextPage() {
 // Initialize the application with device detection
 async function initApp() {
   try {
+    // Load WASM module before anything else
+    await loadWasmModule();
+    
     // 在應用載入時檢測裝置類型並添加相應的類到 body
     const device = deviceDetection();
     document.body.classList.add(device.deviceType);

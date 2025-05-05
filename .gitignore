@@ -3,3 +3,8 @@
 Cargo.lock
 bin/
 wasm-pack.log
+# Keep all important files
+# Do NOT ignore the following files:
+!*.js
+!*.wasm
+!package.json
