@@ -1,10 +1,6 @@
+# Ignore build artifacts except WebAssembly module
 /target
-**/*.rs.bk
-Cargo.lock
-bin/
-wasm-pack.log
-# Keep all important files
-# Do NOT ignore the following files:
-!*.js
-!*.wasm
-!package.json
+/Cargo.lock
+/pkg/.gitignore
+!/pkg/*.js
+!/pkg/*.wasm

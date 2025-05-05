@@ -1,15 +1,5 @@
 {
   "name": "aznitro-website",
   "type": "module",
-  "version": "0.1.0",
-  "files": [
-    "aznitro_website_bg.wasm",
-    "aznitro_website.js",
-    "aznitro_website.d.ts"
-  ],
-  "main": "aznitro_website.js",
-  "types": "aznitro_website.d.ts",
-  "sideEffects": [
-    "./snippets/*"
-  ]
+  "main": "aznitro_website.js"
 }
