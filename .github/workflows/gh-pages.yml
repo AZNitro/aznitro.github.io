@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+# 添加权限设置
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -28,3 +32,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
+          publish_branch: gh-pages  # 对于用户页面，我们需要单独设置分支
