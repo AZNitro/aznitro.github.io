@@ -3,4 +3,3 @@
 Cargo.lock
 bin/
 wasm-pack.log
-# 移除了 pkg/，确保 WASM 生成的文件会被提交
