@@ -1,7 +1,20 @@
-// KEEP these utility functions
+// More robust base URL detection
 const getBaseUrl = () => {
-  const scriptPath = document.currentScript.src;
-  return scriptPath.substring(0, scriptPath.lastIndexOf('/') + 1);
+  // Try document.currentScript first (works during initial script execution)
+  if (document.currentScript && document.currentScript.src) {
+    return document.currentScript.src.substring(0, document.currentScript.src.lastIndexOf('/') + 1);
+  }
+  
+  // Fallback: find the script tag with app.js
+  const scripts = document.getElementsByTagName('script');
+  for (const script of scripts) {
+    if (script.src && script.src.includes('app.js')) {
+      return script.src.substring(0, script.src.lastIndexOf('/') + 1);
+    }
+  }
+  
+  // Final fallback: use the current page location 
+  return window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
 };
 
 // Declare variables to store the imported functions
