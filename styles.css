@@ -1,0 +1,1033 @@
+/* Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to bottom, #000000, #0a1929, #0c2d4a) fixed;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Layout Components */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.main-content {
+  flex: 2;
+  max-width: calc(66.666% - 10px);
+}
+
+.github-section {
+  flex: 1;
+  max-width: calc(33.333% - 10px);
+  margin-bottom: 0;
+}
+
+/* Header & Navigation */
+.top-bar {
+  width: 100vw;
+  height: 60px;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 2em;
+  box-shadow: 0 2px 10px rgba(0, 140, 255, 0.15);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #99CCFF;
+  text-shadow: 0 0 10px rgba(153, 204, 255, 0.7);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#greet-btn {
+  font-size: 1em;
+  padding: 0.5em 1.2em;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background 0.2s;
+}
+
+#greet-btn:hover {
+  background: #388e3c;
+}
+
+/* Section Headers */
+.section-headers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.github-header, .playlist-header, .contact-header {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0 0 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.github-header {
+  width: calc(33.333% - 10px);
+  gap: 10px;
+}
+
+.github-header svg {
+  margin-right: 10px;
+}
+
+.playlist-header {
+  width: calc(66.666% - 10px);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Card Components */
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.playlist-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.playlist-card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.playlist-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.playlist-card .title {
+  padding: 0 15px;
+  font-weight: bold;
+}
+
+/* GitHub Repository Styles */
+.repo-display {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.repo-card {
+  width: 100%;
+  background-color: #171b21;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #30363d;
+  cursor: pointer;
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  margin: 0 auto 5px;
+  position: relative;
+  animation: slideIn 0.8s ease-out forwards;
+}
+
+.repo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.repo-preview {
+  background-color: #171b21;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+}
+
+.repo-img {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.repo-img.loaded {
+  opacity: 1;
+}
+
+.repo-preview img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease-in-out;
+}
+
+.repo-card:hover .repo-preview img {
+  transform: scale(1.05);
+}
+
+.repo-header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.repo-name {
+  font-weight: bold;
+  color: #c9d1d9;
+}
+
+.repo-content {
+  padding: 0 10px 5px;
+  display: flex;
+  flex-direction: column;
+  height: 95px;
+}
+
+.repo-description {
+  color: #8b949e;
+  margin-bottom: 10px;
+  font-size: 14px;
+  height: 59px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.repo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  font-size: 12px;
+}
+
+.repo-language {
+  display: flex;
+  align-items: center;
+}
+
+.language-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.repo-stats {
+  display: flex;
+}
+
+.repo-stats span {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  color: #8b949e;
+}
+
+/* Repo Navigation */
+.repo-dots {
+  display: flex;
+  justify-content: center;
+  /* margin-top: -30px; */ /* Remove or adjust negative margin */
+  margin-top: 10px;    /* Add positive margin to push dots down */
+  position: relative;
+  z-index: 3;
+}
+
+.repo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.repo-dot.active {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.repo-dot:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Greeting Section */
+.greeting {
+  margin-top: 0;
+  padding-top: -20px;
+}
+
+.greeting h3 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Contact Cards */
+.contact-card {
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card.copied {
+  background-color: rgba(153, 204, 255, 0.25) !important;
+  transform: translateY(-5px);
+}
+
+.contact-card .title {
+  font-size: 15px;
+}
+
+.contact-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 5px;
+  height: 70px;
+  width: 70px;
+  min-width: 70px;
+}
+
+.contact-icon svg {
+  width: 50px;
+  height: 50px;
+}
+
+/* Status Messages */
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #8b949e;
+}
+
+.repo-error {
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+  /* Change layout direction to vertical */
+  .content-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Reset width constraints */
+  .main-content,
+  .github-section {
+    flex: 1;
+    max-width: 100%;
+  }
+  
+  /* Hide GitHub header and adjust playlist header */
+  .github-header {
+    display: none;
+  }
+  
+  .playlist-header {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Adjust section headers */
+  .section-headers {
+    justify-content: center;
+  }
+  
+  /* Make repository card more compact */
+  .repo-display {
+    height: 280px;      /* Set a fixed height for mobile */
+  }
+  
+  /* Adjust contact grid */
+  .playlist-grid.contact-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  
+  /* Make the email card span two columns on mobile */
+  .email-card {
+    grid-column: span 2;
+  }
+  
+  /* Make contact cards more compact */
+  .contact-card .title {
+    font-size: 14px;
+  }
+  
+  .contact-icon {
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+  }
+  
+  .contact-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Smaller phones */
+@media screen and (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  .typing-animation-container {
+    margin: 15px 0 10px 0;
+    min-height: 60px;
+    padding: 10px;
+  }
+  
+  .typing-animation {
+    font-size: 18px;
+  }
+  
+  .cursor {
+    height: 18px;
+  }
+  
+  /* Stack repository and content sections with proper spacing */
+  .github-section {
+    margin-bottom: 10px;
+  }
+  
+  /* Reduce top-bar height */
+  .top-bar {
+    height: 50px;
+    padding: 0 1em;
+  }
+  
+  .logo {
+    font-size: 1.7rem;
+  }
+}
+
+/* Typing Animation */
+.typing-animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0 15px 0; /* Added bottom margin to reduce space */
+  min-height: 80px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.typing-animation {
+  font-size: 24px;
+  font-weight: 500;
+  color: #99CCFF;
+  text-shadow: 0 0 10px rgba(153, 204, 255, 0.4);
+  letter-spacing: 1px;
+  position: relative;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 24px;
+  background-color: #99CCFF;
+  margin-left: 2px;
+  align-self: center;
+  animation: blink 1s infinite;
+}
+
+/* Arrow Navigation */
+.arrow-navigation {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.arrow-down {
+  cursor: pointer;
+  pointer-events: auto;
+  filter: drop-shadow(0 0 8px rgba(153, 204, 255, 0.8));
+  transition: transform 0.3s ease;
+}
+
+.arrow-down:hover {
+  transform: translateY(5px);
+}
+
+#arrow-down-svg {
+  animation: arrowBounce 2s infinite;
+}
+
+/* Bottom indicator animation */
+.arrow-navigation .arrow-down.pulse {
+  animation: pulse 1.5s infinite;
+  filter: drop-shadow(0 0 12px rgba(153, 204, 255, 1));
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+.arrow-navigation.at-bottom {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
+/* Page Transitions */
+.page-transition {
+  animation: pageFadeOut 1s forwards;
+}
+
+.next-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #000000, #0a1929, #0c2d4a);
+  display: none;
+  z-index: 9999;
+}
+
+.next-page.active {
+  display: block;
+  animation: pageFadeIn 1s forwards;
+}
+
+/* Page Navigation Dots */
+.page-navigation {
+  position: fixed;
+  bottom: 20px; /* Position at the bottom */
+  right: 20px;
+  display: flex;
+  flex-direction: column; /* Keep vertical layout */
+  gap: 10px;
+  z-index: 1000;
+  align-items: center;
+}
+
+.nav-cat-icon {
+  margin-bottom: 5px;
+  filter: drop-shadow(0 0 4px rgba(153, 204, 255, 0.6));
+  transition: transform 0.3s;
+}
+
+.nav-cat-icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(153, 204, 255, 0.9));
+}
+
+.cat-icon {
+  fill: #99CCFF;
+}
+
+.page-dots-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.page-dot:hover {
+  transform: scale(1.2);
+  background-color: rgba(153, 204, 255, 0.6);
+}
+
+.page-dot.active {
+  background-color: #99CCFF;
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(153, 204, 255, 0.6);
+}
+
+/* Running Boy Animation */
+.running-path-container {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  margin: 10px 0; /* Reduced margin from 25px to 10px */
+  overflow: hidden;
+}
+
+.running-path {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: rgba(153, 204, 255, 0.2);
+  top: 60px;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(153, 204, 255, 0.3);
+  overflow: hidden;
+}
+
+.running-path::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(153, 204, 255, 0.8) 20%, rgba(153, 204, 255, 0.8) 80%, transparent);
+  top: 2px;
+  animation: path-light 3s infinite linear;
+}
+
+.running-boy {
+  position: absolute;
+  left: 20%;
+  top: 30px;
+  animation: running-bounce 0.6s infinite alternate;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.stick-figure {
+  width: 24px;
+  height: 30px;
+  position: relative;
+}
+
+.head {
+  width: 12px;
+  height: 12px;
+  background-color: #99CCFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 6px;
+  box-shadow: 0 0 8px rgba(153, 204, 255, 0.8);
+}
+
+.body {
+  width: 2px;
+  height: 14px;
+  background-color: #99CCFF;
+  position: absolute;
+  top: 12px;
+  left: 11px;
+  box-shadow: 0 0 8px rgba(153, 204, 255, 0.8);
+}
+
+.arm-left, .arm-right {
+  width: 8px;
+  height: 2px;
+  background-color: #99CCFF;
+  position: absolute;
+  top: 15px;
+  box-shadow: 0 0 8px rgba(153, 204, 255, 0.8);
+}
+
+.arm-left {
+  left: 3px;
+  transform-origin: right center;
+  animation: swing-arm-left 0.6s infinite alternate;
+}
+
+.arm-right {
+  left: 13px;
+  transform-origin: left center;
+  animation: swing-arm-right 0.6s infinite alternate;
+}
+
+.leg-left, .leg-right {
+  width: 2px;
+  height: 10px;
+  background-color: #99CCFF;
+  position: absolute;
+  top: 26px;
+  box-shadow: 0 0 8px rgba(153, 204, 255, 0.8);
+}
+
+.leg-left {
+  left: 8px;
+  transform-origin: top center;
+  animation: swing-leg-left 0.6s infinite alternate;
+}
+
+.leg-right {
+  left: 14px;
+  transform-origin: top center;
+  animation: swing-leg-right 0.6s infinite alternate;
+}
+
+@keyframes path-light {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes running-bounce {
+  0% { transform: translateY(0) rotateX(0); }
+  100% { transform: translateY(-4px) rotateX(5deg); }
+}
+
+@keyframes swing-arm-left {
+  0% { transform: rotate(-30deg); }
+  100% { transform: rotate(30deg); }
+}
+
+@keyframes swing-arm-right {
+  0% { transform: rotate(30deg); }
+  100% { transform: rotate(-30deg); }
+}
+
+@keyframes swing-leg-left {
+  0% { transform: rotate(-20deg); }
+  100% { transform: rotate(20deg); }
+}
+
+@keyframes swing-leg-right {
+  0% { transform: rotate(20deg); }
+  100% { transform: rotate(-20deg); }
+}
+
+/* Consolidated Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes copyFeedback {
+  0%, 100% { transform: scale(1); color: #fff; }
+  20%, 80% { transform: scale(1.1); color: #99CCFF; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideTransition {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.slide-right-out, .slide-left-out, .slide-right-in, .slide-left-in {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards !important;
+}
+
+.slide-right-out { animation-name: slideOutToRight; }
+.slide-left-out { animation-name: slideOutToLeft; }
+.slide-right-in { animation-name: slideInFromLeft; }
+.slide-left-in { animation-name: slideInFromRight; }
+
+@keyframes slideOutToLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-30px); opacity: 0; }
+}
+
+@keyframes slideOutToRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(30px); opacity: 0; }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pageFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes arrowBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(8px); }
+  60% { transform: translateY(4px); }
+}
+
+/* Enhanced Device-Specific Styles */
+.touch-device .repo-card {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(153, 204, 255, 0.3);
+}
+
+/* Mobile-specific enhancements */
+.mobile .typing-animation {
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.mobile .cursor {
+  height: 20px;
+}
+
+.mobile .logo {
+  font-size: 1.6rem;
+}
+
+.mobile .greeting h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.mobile .contact-icon {
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+}
+
+.mobile .contact-icon svg {
+  width: 35px;
+  height: 35px;
+}
+
+/* Improve touch targets for mobile */
+.mobile .repo-dot, 
+.touch-device .repo-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+}
+
+.mobile .page-dot,
+.touch-device .page-dot {
+  width: 14px;
+  height: 14px;
+  margin: 0 8px;
+}
+
+/* Additional fine-tuning for very small screens */
+@media screen and (max-width: 360px) {
+  .mobile .repo-dot,
+  .touch-device .repo-dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+  }
+  
+  .repo-dots {
+    /* margin-top: -25px; */ /* Remove or adjust negative margin */
+    margin-top: 5px;     /* Add smaller positive margin for small screens */
+  }
+}
+
+/* Fix potential scrolling issues on iOS */
+.mobile, .tablet {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Portrait mode adjustments */
+.portrait.mobile .content-wrapper {
+  gap: 10px;
+}
+
+.portrait.mobile .section-headers {
+  margin-bottom: 10px;
+}
+
+/* Low-end device performance optimizations */
+.mobile .running-boy {
+  animation: running-bounce 0.8s infinite alternate;
+}
+
+.mobile .arm-left {
+  animation: swing-arm-left 0.8s infinite alternate;
+}
+
+.mobile .arm-right {
+  animation: swing-arm-right 0.8s infinite alternate;
+}
+
+.mobile .leg-left {
+  animation: swing-leg-left 0.8s infinite alternate;
+}
+
+.mobile .leg-right {
+  animation: swing-leg-right 0.8s infinite alternate;
+}
+
+/* Hide certain elements on very small screens */
+@media screen and (max-width: 360px) {
+  .running-path-container {
+    display: none;
+  }
+  
+  .top-bar {
+    height: 45px;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  #greet-btn {
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
+  }
+}
+
+/* 在文件底部添加，用於修復高解析度手機顯示問題 */
+
+/* 確保高解析度手機正確套用樣式 */
+@media screen and (max-width: 480px), 
+       screen and (max-device-width: 480px),
+       screen and (max-width: 480px) and (orientation: portrait) {
+  /* 強制套用手機樣式 */
+  body:not(.mobile) {
+    /* 如果裝置檢測失敗，這裡作為備份方案 */
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* 確保內容容器正確縮放 */
+  .content-wrapper {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  
+  /* 重設寬度約束 */
+  .main-content,
+  .github-section {
+    flex: 1 !important;
+    max-width: 100% !important;
+  }
+  
+  /* 隱藏 GitHub 標題和調整播放列表標題 */
+  .github-header {
+    display: none !important;
+  }
+  
+  .playlist-header {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  /* 調整章節標題 */
+  .section-headers {
+    justify-content: center !important;
+  }
+}
+
+/* Intro Animation for Page 2 */
+.intro-animation-container {
+  position: fixed;
+  top: 60px; /* Start below the top bar */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 60px); /* Cover only the area below top bar */
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.intro-text {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  margin: 20px 0;
+  text-shadow: 0 0 10px rgba(153, 204, 255, 0.7);
+  max-width: 90%;
+  width: 80%;
+  position: absolute;
+}
+
+.intro-text.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: textGlow 2s infinite alternate;
+}
+
+.intro-text.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px rgba(153, 204, 255, 0.7);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(153, 204, 255, 1);
+  }
+}
+
+/* Mobile adjustments for intro animation */
+@media screen and (max-width: 768px) {
+  .intro-text {
+    font-size: 1.8rem;
+    padding: 0 20px;
+  }
+}
