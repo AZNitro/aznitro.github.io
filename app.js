@@ -1,6 +1,3 @@
-// REMOVE this direct import at the top
-// import { init, greet, fetch_github_repos, get_language_color } from "./pkg/aznitro_website.js";
-
 // KEEP these utility functions
 const getBaseUrl = () => {
   const scriptPath = document.currentScript.src;
@@ -18,10 +15,10 @@ async function loadWasmModule() {
     
     // Dynamic import with the correct path
     const wasmModule = await import(`${baseUrl}pkg/aznitro_website.js`);
-    console.log('WASM module loaded successfully');
+    console.log('WASM module loaded successfully', wasmModule);
     
-    // Assign the imported functions
-    init = wasmModule.default;
+    // Assign the imported functions - here's the key fix:
+    init = wasmModule.default;  // init is the default export
     greet = wasmModule.greet;
     fetch_github_repos = wasmModule.fetch_github_repos;
     get_language_color = wasmModule.get_language_color;
@@ -947,6 +944,10 @@ function setupScrollToNextPage() {
 // Initialize the application with device detection
 async function initApp() {
   try {
+    // Add debug output for troubleshooting
+    console.log("Starting app initialization");
+    checkWasmFiles(); // This will check if your WASM files are accessible
+    
     // Load WASM module before anything else
     await loadWasmModule();
     
