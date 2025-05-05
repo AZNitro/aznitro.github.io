@@ -38,6 +38,19 @@ jobs:
           ls -la _site/
           ls -la _site/pkg/
           
+      - name: Verify WASM files
+        run: |
+          echo "WebAssembly files:"
+          find _site/pkg/ -name "*.wasm" -ls
+          
+          # Verify the main JavaScript entry point
+          if [ -f _site/pkg/aznitro_website.js ]; then
+            echo "✅ Main JS module found"
+          else
+            echo "❌ Main JS module missing!"
+            exit 1
+          fi
+          
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

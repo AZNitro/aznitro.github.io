@@ -1,4 +1,17 @@
-import init, { greet, fetch_github_repos, get_language_color } from "./pkg/aznitro_website.js";
+import { init, greet, fetch_github_repos, get_language_color } from "./pkg/aznitro_website.js";
+
+// Get the base URL for GitHub Pages deployment
+const getBaseUrl = () => {
+  const scriptPath = document.currentScript.src;
+  return scriptPath.substring(0, scriptPath.lastIndexOf('/') + 1);
+};
+
+// Use dynamic import with the correct base URL
+const loadWasm = async () => {
+  const baseUrl = getBaseUrl();
+  const wasmModule = await import(`${baseUrl}pkg/aznitro_website.js`);
+  return wasmModule;
+};
 
 // Enhanced device detection utility with emulator support
 function deviceDetection() {
@@ -577,9 +590,15 @@ function setupJourneyButton() {
   
   function loadPage2Content() {
     const container = document.querySelector('.container');
+    const baseUrl = getBaseUrl();
     
-    fetch('page2/page2.html')
-      .then(response => response.text())
+    fetch(`${baseUrl}page2/page2.html`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to load page2.html: ${response.status}`);
+        }
+        return response.text();
+      })
       .then(html => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
