@@ -929,6 +929,15 @@ body {
   }
 }
 
+/* 為手機版增加更多底部空間 */
+.mobile .container {
+  padding-bottom: 120px; /* 增加底部留白 */
+}
+
+.mobile .arrow-navigation {
+  margin-top: 50px; /* 將箭頭導航下移 */
+}
+
 /* 在文件底部添加，用於修復高解析度手機顯示問題 */
 
 /* 確保高解析度手機正確套用樣式 */

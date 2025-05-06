@@ -946,8 +946,8 @@ function setupScrollToNextPage() {
         return;
       }
       
-      // Only if we're already at bottom AND user swipes substantially
-      if (isAtBottomState && touchDiff > 80) {
+      // 增加觸發門檻：從80px增加到150px
+      if (isAtBottomState && touchDiff > 150) {
         triggerNavigation();
       }
     }
